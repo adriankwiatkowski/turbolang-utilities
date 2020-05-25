@@ -11,7 +11,7 @@ compilation modes are supported.
 Because this project uses modern and advanced language features, minimal compiler version required is 1.2.
 
 ## turbolang usecase
-If you want to see applications of turbolang for high performance projects you may visit (not available yet),
+If you want to see applications of turbolang for high performance projects you may visit https://github.com/addrianyy/mandelbrot,
 a repository containing mandelbrot renderer by addrianyy, senior compiler engineer and language designer.
 
 ## Screenshot
