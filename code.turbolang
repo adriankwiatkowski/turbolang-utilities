@@ -1,0 +1,280 @@
+func tab() {
+	stdPrintChar(9);
+}
+
+
+func space() {
+	stdPrintChar(32);
+}
+
+func stdPrintNumWithSpace(x) {
+	stdPrintNum(x);
+	space();
+}
+
+func main() {
+	helloWorld();
+	
+	stdPrintlnNum(newtonRaphson(256));
+	
+	sort(1, 5, 7, 2, 3, 10, 15, 25);
+	
+	numTraingle(7);
+	
+	asciiTriangle();
+	
+	fibTriangle(30);
+	
+	arrayWorld();
+	
+	charSupportTest();
+	
+	return 0;
+}
+
+func helloWorld() {
+	#72 101 108 108 111 44 32 87 111 114 108 100 33
+	stdPrintChar(72);
+	stdPrintChar(101);
+	stdPrintChar(108);
+	stdPrintChar(108);
+	stdPrintChar(111);
+	stdPrintChar(44);
+	stdPrintChar(32);
+	stdPrintChar(87);
+	stdPrintChar(111);
+	stdPrintChar(114);
+	stdPrintChar(108);
+	stdPrintChar(100);
+	stdPrintChar(33);
+	
+	stdPrintln();
+}
+
+func sort(a1, a2, a3, a4, a5, a6, a7, a8) {
+	var temp = 0;
+	for var i = 0; i < 8 - 1; i += 1 {
+		for var j = 0; j < 8 - 1 - i; j += 1 {
+			# Language doesn't support == operator, 
+			# due to imprecision with doubles.
+			if j < 1 {
+				if a1 > a2 {
+					temp = a1;
+					a1 = a2;
+					a2 = temp;
+				}
+			} elseif j < 2 {
+				if a2 > a3 {
+					temp = a2;
+					a2 = a3;
+					a3 = temp;
+				}
+			} elseif j < 3 {
+				if a3 > a4 {
+					temp = a3;
+					a3 = a4;
+					a4 = temp;
+				}
+			} elseif j < 4 {
+				if a4 > a5 {
+					temp = a4;
+					a4 = a5;
+					a5 = temp;
+				}
+			} elseif j < 5 {
+				if a5 > a6 {
+					temp = a5;
+					a5 = a6;
+					a6 = temp;
+				}
+			} elseif j < 6 {
+				if a6 > a7 {
+					temp = a6;
+					a6 = a7;
+					a7= temp;
+				}
+			} elseif j < 7{
+				if a7 > a8 {
+					temp = a7;
+					a7 = a8;
+					a8 = temp;
+				}
+			}
+		}
+	}
+	
+	stdPrintNumWithSpace(a1);
+	stdPrintNumWithSpace(a2);
+	stdPrintNumWithSpace(a3);
+	stdPrintNumWithSpace(a4);
+	stdPrintNumWithSpace(a5);
+	stdPrintNumWithSpace(a6);
+	stdPrintNumWithSpace(a7);
+	stdPrintNumWithSpace(a8);
+	
+	stdPrintln();
+}
+
+func numTraingle(x) {
+	for var i = 1; i < x + 1; i += 1 {
+	
+		for var j = 1; j < x - i + 1; j += 1 {
+			space();
+		}
+		
+		for var j = 1; j < i + 1; j += 1 {
+			stdPrintNum(j);
+		}
+		
+		for var j = i - 1; j > 0; j -= 1 {
+			stdPrintNum(j);
+		}
+
+		stdPrintln();
+	}
+}
+
+func asciiTriangle() {
+	var char = 65;
+	var x = 90 - char + 1;
+	
+	for var i = 1; i < x + 1; i += 1 {
+		var curr = char;
+	
+		for var j = 1; j < x - i + 1; j += 1 {
+			space();
+		}
+		
+		for var j = 1; j < i + 1; j += 1 {
+			stdPrintChar(curr);
+			curr += 1;
+		}
+		
+		curr -= 1;
+		for var j = i - 1; j > 0; j -= 1 {
+			curr -= 1;
+			stdPrintChar(curr);
+		}
+
+		stdPrintln();
+	}
+}
+
+func fibTriangle(x) {
+	for var i = 0; i < x; i += 1 {
+		var a = 0;
+		var b = 1;
+		stdPrintNum(b);
+		tab();
+		for var j = 0; j < i; j += 1 {
+			var c = a + b;
+			stdPrintNum(c);
+			tab();
+			a = b;
+			b = c;
+		}
+		stdPrintln();
+	}
+}
+
+func newtonRaphson(x) {
+	var a = 1;
+	var b = x;
+	var eps = 1 / 100000;
+
+	while abs(a - b) > eps {
+		a = (a + b) / 2;
+		b = x / a;
+	}
+	
+	return a;
+}
+
+func abs(x) {
+	if x < 0 { return 0 - x; }
+	return x;
+}
+
+func arrayWorld() {
+	var array = stdArrayCreate();
+	
+	for var i = 0; i < 21; i += 1 {
+		stdArrayPush(array, stdRandom());
+	}
+	
+	stdArrayRemove(array, 0);
+	
+	sortArray(array);
+	dumpArray(array);
+	
+	var array1 = stdArrayCreate();
+	stdArrayPush(array1, 1);
+	stdArrayPush(array1, 2);
+	stdArrayPush(array1, 3);
+	stdArrayPush(array1, 2);
+	stdArrayPush(array1, 1);
+	if isPalindrome(array1) > 0 {
+		stdPrintlnChar(84);
+	} else {
+		stdPrintlnChar(70);
+	}
+}
+
+func sortArray(array) {
+	var length = stdArrayLength(array);
+	
+	for var i = 0; i < length - 1; i += 1 {
+		for var j = 0; j < length - 1 - i; j += 1 {
+			if array[j] > array[j + 1] {
+				var temp = array[j];
+				array[j] = array[j + 1];
+				array[j + 1] = temp;
+			}
+		}
+	}
+}
+
+func dumpArray(array) {
+    var length = stdArrayLength(array);
+
+    for var i = 0; i < length; i += 1 {
+        stdPrintNum(array[i]);
+		space();
+    }
+	
+	stdPrintln();
+}
+
+func isPalindrome(array) {
+	var length = stdArrayLength(array);
+	
+	for var i = 0; i < length / 2; i += 1 {
+		var a = array[i];
+		var b = array[length - 1 - i];
+		if isEqual(a, b) < 0 {
+			return 0 - 1;
+		}
+	}
+	
+	return 1;
+}
+
+func isEqual(a, b) {
+	if a > b {
+		return 0 - 1;
+	}
+	if a < b {
+		return 0 - 1;
+	}
+	return 1;
+}
+
+func charSupportTest() {
+	stdPrintChar('a');
+	stdPrintChar(' ');
+	stdPrintChar('b');
+	stdPrintChar(' ');
+	stdPrintChar('c');
+	stdPrintChar(' ');
+	stdPrintln();
+}
