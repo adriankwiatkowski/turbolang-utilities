@@ -2,9 +2,8 @@ func tab() {
 	stdPrintChar(9);
 }
 
-
 func space() {
-	stdPrintChar(32);
+	stdPrintChar(' ');
 }
 
 func stdPrintNumWithSpace(x) {
@@ -33,20 +32,19 @@ func main() {
 }
 
 func helloWorld() {
-	#72 101 108 108 111 44 32 87 111 114 108 100 33
-	stdPrintChar(72);
-	stdPrintChar(101);
-	stdPrintChar(108);
-	stdPrintChar(108);
-	stdPrintChar(111);
-	stdPrintChar(44);
-	stdPrintChar(32);
-	stdPrintChar(87);
-	stdPrintChar(111);
-	stdPrintChar(114);
-	stdPrintChar(108);
-	stdPrintChar(100);
-	stdPrintChar(33);
+	stdPrintChar('H');
+	stdPrintChar('e');
+	stdPrintChar('l');
+	stdPrintChar('l');
+	stdPrintChar('o');
+	stdPrintChar(',');
+	stdPrintChar(' ');
+	stdPrintChar('W');
+	stdPrintChar('o');
+	stdPrintChar('r');
+	stdPrintChar('l');
+	stdPrintChar('d');
+	stdPrintChar('!');
 	
 	stdPrintln();
 }
@@ -135,8 +133,8 @@ func numTraingle(x) {
 }
 
 func asciiTriangle() {
-	var char = 65;
-	var x = 90 - char + 1;
+	var char = 'A';
+	var x = 'Z' - char + 1;
 	
 	for var i = 1; i < x + 1; i += 1 {
 		var curr = char;
@@ -191,7 +189,7 @@ func newtonRaphson(x) {
 }
 
 func abs(x) {
-	if x < 0 { return 0 - x; }
+	if x < 0 { return -x; }
 	return x;
 }
 
@@ -214,9 +212,9 @@ func arrayWorld() {
 	stdArrayPush(array1, 2);
 	stdArrayPush(array1, 1);
 	if isPalindrome(array1) > 0 {
-		stdPrintlnChar(84);
+		stdPrintlnChar('T');
 	} else {
-		stdPrintlnChar(70);
+		stdPrintlnChar('F');
 	}
 }
 
@@ -235,12 +233,10 @@ func sortArray(array) {
 }
 
 func dumpArray(array) {
-    var length = stdArrayLength(array);
-
-    for var i = 0; i < length; i += 1 {
-        stdPrintNum(array[i]);
+	foreach num in array {
+		stdPrintNum(num);
 		space();
-    }
+	}
 	
 	stdPrintln();
 }
@@ -252,7 +248,7 @@ func isPalindrome(array) {
 		var a = array[i];
 		var b = array[length - 1 - i];
 		if isEqual(a, b) < 0 {
-			return 0 - 1;
+			return -1;
 		}
 	}
 	
@@ -261,10 +257,10 @@ func isPalindrome(array) {
 
 func isEqual(a, b) {
 	if a > b {
-		return 0 - 1;
+		return -1;
 	}
 	if a < b {
-		return 0 - 1;
+		return -1;
 	}
 	return 1;
 }
