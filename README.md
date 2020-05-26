@@ -8,7 +8,7 @@ Efficiency and performance is number one priority for turbolang. It utilizes LLV
 compilation modes are supported.
 
 ## Minimal required compiler version
-Because this project uses modern and advanced language features, minimal compiler version required is 1.2.
+Because this project uses modern and advanced language features, minimal compiler version required is 1.3.
 
 ## turbolang usecase
 If you want to see applications of turbolang for high performance projects you may visit https://github.com/addrianyy/mandelbrot,
