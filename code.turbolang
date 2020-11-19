@@ -91,7 +91,7 @@ func sort(a1, a2, a3, a4, a5, a6, a7, a8) {
 					a6 = a7;
 					a7= temp;
 				}
-			} elseif j < 7{
+			} elseif j < 7 {
 				if a7 > a8 {
 					temp = a7;
 					a7 = a8;
